@@ -16,7 +16,7 @@
 @unknownHistory: rgb(0, 0, 0);
 
 body {
-  background-image: url("/img/background.png");
+  background-image: url("/img/zig.png");
   padding: 10px;
   color: @foreground;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -102,7 +102,7 @@ div.build-status {
 }
 
 div.build-status h3 {
-  margin: 0;
+  top: 10%;
 }
 
 div.build-status > div {
@@ -138,7 +138,7 @@ div.build-running {
   text-align: center;
   height: 20%;
   border: 2px solid @foreground;
-  background-color: fadeout(#ffffff, 60%);
+  background-color: fadeout(#000000, 80%);
   position: absolute;
   left: 5%;
   width: 90%;
@@ -163,6 +163,7 @@ div.build-running > div > div {
   padding: 4px 10px;
   background-color: fadeout(@unknownRunning, 15%);
   font-size: 90%;
+  vertical-align: middle;
 }
 
 div.build-running.success > div > div {
@@ -180,7 +181,7 @@ div.build-running.failed > div > div {
   white-space: nowrap;
   text-align: right;
   color: @foreground;
-  background-color: #ffffff;
+  background-color: fadeout(#ffffff, 30%);
   border-radius: 5px;
   padding: 2px 10px;
   border: 2px solid @foreground;

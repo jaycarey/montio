@@ -16,7 +16,7 @@ public class MontiorBinder(val montiorConfig: MontiorConfig) : AbstractBinder() 
 
     val mapper = MapperFactory().mapper
 
-    val ci = TeamCityCi(montiorConfig.url, Guest)
+    val ci = TeamCityCi(montiorConfig.url, montiorConfig.credentials)
 
     val statusCache = StatusCacheFactory(MockCi(ci))
 

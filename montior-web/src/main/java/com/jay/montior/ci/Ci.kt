@@ -18,7 +18,7 @@ interface Ci {
     open fun status(build: Build): Build?
 }
 
-class MockCi(private val ci: Ci, private val cache: Boolean = true) : Ci {
+class MockCi(private val ci: Ci, private val cache: Boolean = false) : Ci {
     private val offlineDir = "${System.getProperty("user.home")}/.montior/offline"
 
     private val mapper = MapperFactory().mapper

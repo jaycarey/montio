@@ -27,7 +27,7 @@ class FakeBuilds {
             val buildType = BuildType("build-$ids", name, "project-${project?.second}", project!!.first, "http://google.com?q=${name}")
             val buildTypeStatus = BuildTypeStatus(buildType, null, null, listOf())
             builds.put("build-$ids", buildTypeStatus)
-            schedule(buildType.id)
+            schedule(buildType.id, 0)
         }
         return builds.values.take(count ).toList()
     }
@@ -48,11 +48,11 @@ class FakeBuilds {
                 latestRunning = null,
                 latestFinished = running.copy(state = State.finished),
                 lastTwenty = buildTypeStatus.lastTwenty + (running.id to running.status)))
-        schedule(id)
+        schedule(id, 20)
     }
 
-    private fun schedule(id: String) {
-        ScheduledExecutorService.schedule({ runBuild(id) }, 20 + Math.abs(random.nextLong()) % 60L, TimeUnit.SECONDS)
+    private fun schedule(id: String, delay: Int) {
+        pool.schedule({ runBuild(id) }, delay + Math.abs(random.nextLong()) % 60L, TimeUnit.SECONDS)
     }
 
     private fun randomNoun(): String =
