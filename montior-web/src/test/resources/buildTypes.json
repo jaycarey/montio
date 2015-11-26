@@ -1,0 +1,22 @@
+{
+  "count": 2,
+  "href": "/guestAuth/app/rest/buildTypes",
+  "buildType": [
+    {
+      "id": "bt297",
+      "name": "Build",
+      "projectName": "Amazon API client",
+      "projectId": "AmazonApiClient",
+      "href": "/guestAuth/app/rest/buildTypes/id:bt297",
+      "webUrl": "https://teamcity.jetbrains.com/viewType.html?buildTypeId=bt297"
+    },
+    {
+      "id": "bt296",
+      "name": "Download missing jar",
+      "projectName": "Amazon API client",
+      "projectId": "AmazonApiClient",
+      "href": "/guestAuth/app/rest/buildTypes/id:bt296",
+      "webUrl": "https://teamcity.jetbrains.com/viewType.html?buildTypeId=bt296"
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+body {
+  background-image: url("/img/background.png");
+  padding: 10px;
+  color: #000000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a:hover,
+a:focus {
+  color: #000000 !important;
+}
+a {
+  color: #000000;
+  text-decoration: none !important;
+}
+.row {
+  text-align: center;
+  overflow: hidden;
+}
+.col {
+  display: inline-block;
+}
+.settings {
+  position: fixed;
+  bottom: 50px;
+  color: #000000;
+  right: 70px;
+  border-radius: 10px;
+  padding: 0;
+  border: #000000 2px solid;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 58px;
+  height: 58px;
+  overflow: hidden;
+}
+.settings.expanded {
+  height: 460px;
+  width: 300px;
+  background-color: #ffffff;
+}
+.settings > div.toggle {
+  position: absolute;
+  right: 8px;
+  bottom: 4px;
+}
+.settings.expanded > div.toggle {
+  -webkit-transform: rotateZ(90deg);
+  transform: rotateZ(90deg);
+}
+.settings > div.settings-inner {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  bottom: 0;
+  width: 92%;
+  height: 95%;
+}
+.settings > div > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.settings.expanded > div.settings-inner {
+  opacity: 1;
+}
+div.grid-container {
+  height: 140px;
+}
+div.build-status {
+  border-radius: 10px;
+  text-align: center;
+  height: 100%;
+  background-image: url("/img/stripes2.png");
+}
+div.build-status h3 {
+  margin: 0;
+}
+div.build-status > div {
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 0;
+  height: 100%;
+  border: 2px solid #000000;
+  padding: 1%;
+  overflow: hidden;
+  position: relative;
+}
+div.failed {
+  -webkit-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+}
+div.success > div {
+  background-color: rgba(51, 204, 51, 0.9);
+}
+div.failed > div {
+  background-color: rgba(255, 51, 51, 0.9);
+}
+div.unknown > div {
+  background-color: rgba(200, 200, 200, 0.9);
+}
+div.build-running {
+  border-radius: 10px;
+  text-align: center;
+  height: 20%;
+  border: 2px solid #000000;
+  background-color: rgba(255, 255, 255, 0.4);
+  position: absolute;
+  left: 5%;
+  width: 90%;
+  bottom: 30%;
+}
+div.build-running > div {
+  border-radius: 8px;
+  padding: 0;
+  color: #000000;
+  height: 100%;
+  font-weight: 900;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background-image: url("/img/stripes.png");
+}
+div.build-running > div > div {
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 100%;
+  padding: 4px 10px;
+  background-color: rgba(220, 220, 220, 0.85);
+  font-size: 90%;
+}
+div.build-running.success > div > div {
+  background-color: rgba(146, 255, 145, 0.85);
+}
+div.build-running.failed > div > div {
+  background-color: rgba(255, 132, 132, 0.85);
+}
+.history {
+  position: absolute;
+  bottom: 10px;
+  right: 5%;
+  white-space: nowrap;
+  text-align: right;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 2px 10px;
+  border: 2px solid #000000;
+}
+.history i.fa-times {
+  margin: 0 2px;
+}
+.spinner-container {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+div.spinner {
+  display: none;
+  width: 200px;
+  height: 160px;
+  font-variant: small-caps;
+  color: red;
+  border-radius: 10px;
+  padding: 4px 5px;
+  border: #000000 2px solid;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 20%;
+}
+.transformable {
+  -webkit-transition: all 300ms linear;
+  -moz-transition: all 300ms linear;
+  -o-transition: all 300ms linear;
+  -ms-transition: all 300ms linear;
+  transition: all 300ms linear;
+}
+.transformable-linear-slow {
+  -webkit-transition: all 1000ms linear;
+  -moz-transition: all 1000ms linear;
+  -o-transition: all 1000ms linear;
+  -ms-transition: all 1000ms linear;
+  transition: all 1000ms linear;
+}
+.transformable-cubic {
+  -webkit-transition: all 1000ms cubic-bezier(0.77, 0, 0.175, 1);
+  -moz-transition: all 1000ms cubic-bezier(0.77, 0, 0.175, 1);
+  -o-transition: all 1000ms cubic-bezier(0.77, 0, 0.175, 1);
+  -ms-transition: all 1000ms cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all 1000ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.form-group.inline {
+  display: inline-block;
+}
+.form-group {
+  margin-top: 10px;
+}
+input {
+  display: block;
+  width: 60px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+input[type='checkbox'] {
+  display: inline-block;
+  width: auto;
+  margin: 10px;
+  height: auto;
+}
+input[type='checkbox'] + label {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+label {
+  display: inline-block;
+  margin: 10px 5px 0 5px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.history i.fa-times {
+  color: #ff0000;
+}
+.history i.fa-check {
+  color: #00ff00;
+}
+.invisible {
+  opacity: 0;
+}

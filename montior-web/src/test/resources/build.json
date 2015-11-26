@@ -1,0 +1,130 @@
+{
+  "id": 632298,
+  "buildTypeId": "bt390",
+  "number": "1.0.0-beta-3302",
+  "status": "SUCCESS",
+  "state": "finished",
+  "branchName": "master",
+  "defaultBranch": true,
+  "href": "/guestAuth/app/rest/builds/id:632298",
+  "webUrl": "https://teamcity.jetbrains.com/viewLog.html?buildId=632298&buildTypeId=bt390",
+  "statusText": "Tests passed: 1990, ignored: 1",
+  "buildType": {
+    "id": "bt390",
+    "name": "Maven Build",
+    "projectName": "Kotlin",
+    "projectId": "Kotlin",
+    "href": "/guestAuth/app/rest/buildTypes/id:bt390",
+    "webUrl": "https://teamcity.jetbrains.com/viewType.html?buildTypeId=bt390"
+  },
+  "queuedDate": "20151121T082130+0300",
+  "startDate": "20151121T101702+0300",
+  "finishDate": "20151121T103219+0300",
+  "triggered": {
+    "type": "buildType",
+    "date": "20151121T082130+0300",
+    "buildType": {
+      "id": "bt438",
+      "name": "Deploy Maven Artifacts",
+      "projectName": "Kotlin",
+      "projectId": "Kotlin",
+      "href": "/guestAuth/app/rest/buildTypes/id:bt438",
+      "webUrl": "https://teamcity.jetbrains.com/viewType.html?buildTypeId=bt438"
+    }
+  },
+  "lastChanges": {
+    "count": 1,
+    "change": [
+      {
+        "id": 2133700,
+        "version": "5aa415c609d96d2661fd945dcd81e8b11e6a8ab3",
+        "username": "ilya.gorbunov",
+        "date": "20151120T224909+0300",
+        "href": "/guestAuth/app/rest/changes/id:2133700",
+        "webUrl": "https://teamcity.jetbrains.com/viewModification.html?modId=2133700&personal=false"
+      }
+    ]
+  },
+  "changes": {
+    "href": "/guestAuth/app/rest/changes?locator=build:(id:632298)"
+  },
+  "revisions": {
+    "count": 1,
+    "revision": [
+      {
+        "version": "5aa415c609d96d2661fd945dcd81e8b11e6a8ab3",
+        "vcs-root-instance": {
+          "id": "2619",
+          "vcs-root-id": "Kotlin___github",
+          "name": "Kotlin @ github",
+          "href": "/guestAuth/app/rest/vcs-root-instances/id:2619"
+        }
+      }
+    ]
+  },
+  "agent": {
+    "name": "ubuntu-14.04-v49-i-0cfb9fb2-1",
+    "typeId": 743
+  },
+  "testOccurrences": {
+    "count": 1991,
+    "href": "/guestAuth/app/rest/testOccurrences?locator=build:(id:632298)",
+    "passed": 1990,
+    "ignored": 1,
+    "default": false
+  },
+  "artifacts": {
+    "href": "/guestAuth/app/rest/builds/id:632298/artifacts/children/"
+  },
+  "relatedIssues": {
+    "href": "/guestAuth/app/rest/builds/id:632298/relatedIssues"
+  },
+  "properties": {
+    "count": 2,
+    "property": [
+      {
+        "name": "system.jdk16.home",
+        "value": "%env.JDK_16%"
+      },
+      {
+        "name": "system.kotlinHome",
+        "value": "%teamcity.build.checkoutDir%/dist/kotlinc"
+      }
+    ]
+  },
+  "statistics": {
+    "href": "/guestAuth/app/rest/builds/id:632298/statistics"
+  },
+  "snapshot-dependencies": {
+    "count": 1,
+    "build": [
+      {
+        "id": 632297,
+        "buildTypeId": "bt345",
+        "number": "1.0.0-beta-3302",
+        "status": "SUCCESS",
+        "state": "finished",
+        "branchName": "master",
+        "defaultBranch": true,
+        "href": "/guestAuth/app/rest/builds/id:632297",
+        "webUrl": "https://teamcity.jetbrains.com/viewLog.html?buildId=632297&buildTypeId=bt345"
+      }
+    ]
+  },
+  "artifact-dependencies": {
+    "count": 1,
+    "build": [
+      {
+        "id": 632297,
+        "buildTypeId": "bt345",
+        "number": "1.0.0-beta-3302",
+        "status": "SUCCESS",
+        "state": "finished",
+        "branchName": "master",
+        "defaultBranch": true,
+        "href": "/guestAuth/app/rest/builds/id:632297",
+        "webUrl": "https://teamcity.jetbrains.com/viewLog.html?buildId=632297&buildTypeId=bt345"
+      }
+    ]
+  }
+}
