@@ -60,7 +60,7 @@
                 function ($scope, $http, $timeout) {
                     $scope.intervalFunction = function () {
                         $http.get(path).success(function (data) {
-                            $scope.spinnerDisplay = 'inline-block';
+                            $scope.spinnerDisplay = 'none';
                             $scope.statuses = data;
                         }).error(function (error) {
                             $scope.spinnerDisplay = 'none';
