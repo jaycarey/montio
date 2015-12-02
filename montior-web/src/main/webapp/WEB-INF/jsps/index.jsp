@@ -12,6 +12,13 @@
         <script>
             var path = '${pageContext.request.contextPath}/${paths['Rest']}' + window.location.search;
 
+            Array.prototype.unique = function() {
+                var o = {}, i, l = this.length, r = [];
+                for(i=0; i<l;i+=1) o[this[i]] = this[i];
+                for(i in o) r.push(o[i]);
+                return r;
+            };
+
             var montiorApp = angular.module('montior', ['ngCookies']);
 
             montiorApp.controller('SettingsController', ['$scope', '$cookieStore',
@@ -30,6 +37,8 @@
                     if ($scope.showHistory == undefined) $scope.showHistory = 5;
                     $scope.showRunning = $cookieStore.get('showRunning') || true;
                     $scope.showText = $cookieStore.get('showText') || true;
+                    $scope.lie = $cookieStore.get('lie') || true;
+                    $scope.monospaced = $cookieStore.get('monospaced') || true;
 
                     $scope.$watch('[columns,rows,boxSpacing,fontSize,showProjectName,showHistory,showRunning,showText]', function (value) {
                         $cookieStore.put('columns', $scope.columns);
@@ -39,7 +48,8 @@
                         $cookieStore.put('showProjectName', $scope.showProjectName);
                         $cookieStore.put('showHistory', $scope.showHistory);
                         $cookieStore.put('showRunning', $scope.showRunning);
-                        $cookieStore.put('showText', $scope.showText);
+                        $cookieStore.put('monospaced', $scope.monospaced);
+                        $cookieStore.put('lie', $scope.showText);
                     });
 
                     // Derived.
@@ -62,8 +72,9 @@
                         $http.get(path).success(function (data) {
                             $scope.spinnerDisplay = 'none';
                             $scope.statuses = data;
+                            $scope.projects = data.builds.map(function(build) {return build.buildType.projectName; }).unique();
                         }).error(function (error) {
-                            $scope.spinnerDisplay = 'none';
+                            $scope.spinnerDisplay = 'block';
                         });
                         $timeout($scope.intervalFunction, 1000);
                     };
@@ -74,13 +85,12 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div ng-controller="SettingsController" ng-mousemove="movement()">
-
+        <div ng-controller="SettingsController" ng-mousemove="movement()" ng-class="{'monospace': monospaced}">
             <div id="mainDiv" class="row" ng-controller="StatusesController">
 
                 <div class="grid-container col" ng-repeat="build in statuses.builds track by build.buildType.id"
                      ng-style="{'width': boxWidth() + 'px', 'height': boxHeight() + 'px', 'padding': boxSpacing / 2 + 'px'}">
-                    <div class="build-status {{build.latestFinished.status}} transformable-cubic">
+                    <div class="build-status {{lie ? 'success' : build.latestFinished.status}} transformable-cubic">
                         <div class="transformable-cubic" title="{{build.buildType.projectName}} :: {{build.buildType.name}}">
                             <div ng-if="showText">
                                 <h3 style="overflow-y: hidden" ng-style="{'font-size': fontSize + 'em', 'height': (fontSize * 3 * 0.9) + 'em'}">
@@ -109,10 +119,16 @@
                     </div>
                 </div>
                 <div class="spinner-container">
-                    <div class="spinner" ng-style="{ 'display': spinnerDisplay }">
-                        <img src="${root}/img/loading.gif"/>
 
-                        <h1>Disconnected</h1>
+                    <div id="wrapper" style="text-align: center">
+                        <div id="yourdiv" style="display: inline-block;">
+                            <div class="spinner" ng-style="{ 'display': spinnerDisplay }">
+                                <img src="${root}/img/loading.gif"/>
+
+                                <h1>Disconnected</h1>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,6 +166,14 @@
                     <div class="form-group">
                         <input id="showRunning" ng-model="showRunning" type="checkbox">
                         <label for="showRunning">Show Running Builds</label>
+                    </div>
+                    <div class="form-group">
+                        <input id="monospaced" ng-model="monospaced" type="checkbox">
+                        <label for="monospaced">Monospaced Font</label>
+                    </div>
+                    <div class="form-group">
+                        <input id="lie" ng-model="lie" type="checkbox">
+                        <label for="lie" title="makes everything green!">Lie mode</label>
                     </div>
                 </div>
                 <div class="toggle transformable">

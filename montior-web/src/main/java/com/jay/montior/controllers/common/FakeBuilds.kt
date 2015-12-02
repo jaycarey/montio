@@ -52,7 +52,7 @@ class FakeBuilds {
     }
 
     private fun schedule(id: String, delay: Int) {
-        pool.schedule({ runBuild(id) }, delay + Math.abs(random.nextLong()) % 60L, TimeUnit.SECONDS)
+        pool.schedule({ runBuild(id) }, delay + Math.abs(random.nextLong()) % 30L, TimeUnit.SECONDS)
     }
 
     private fun randomNoun(): String =

@@ -7,6 +7,7 @@ import com.jay.montior.ci.teamcity.Guest
 import com.jay.montior.ci.teamcity.TeamCityCi
 import com.jay.montior.common.MapperFactory
 import com.jay.montior.common.MontiorConfig
+import com.jay.montior.common.Test
 import com.jay.montior.common.Util.initAnd
 import com.jay.montior.core.StatusCache
 import org.glassfish.hk2.api.Factory
@@ -18,15 +19,13 @@ public class MontiorBinder(val montiorConfig: MontiorConfig) : AbstractBinder() 
 
     val ci = TeamCityCi(montiorConfig.url, montiorConfig.credentials)
 
-    val statusCache = StatusCacheFactory(MockCi(ci))
+    val statusCache =
+            StatusCacheFactory(if (montiorConfig.env != Test) MockCi(ci) else ci)
 
     class StatusCacheFactory(ci: Ci) : Factory<StatusCache> {
         val statusCache by lazy {
-            initAnd(StatusCache(ci)) {
-                it.init()
-            }
+            initAnd(StatusCache(ci)) { it.init() }
         }
-
         override fun provide(): StatusCache = statusCache
         override fun dispose(statusCache: StatusCache) = statusCache.close()
     }
